@@ -6,8 +6,7 @@
 @font-face {
   font-family: "Product Sans";
   src: local("Product Sans Regular"), local("Google Sans Regular"),
-    url(https://cdn.jsdelivr.net/gh/186526/jsdelivr@1.1.8/static/ProductSans-Regular.woff2)
-      format("woff2");
+    url(https://cdn.jsdelivr.net/gh/jssycszyj/renexmoe-cdn/fonts/ProductSans-Regular.woff2) format("woff2");
 }
 
 body {
@@ -27,7 +26,7 @@ body {
   border-radius: 0 50px 50px 0;
 }
 
-.mdui-toolbar > a,
+.mdui-toolbar>a,
 .mdui-chip-title,
 .mdui-dialog-title {
   font-family: Product Sans, Noto Sans SC, Roboto, Noto, Helvetica, Arial,
@@ -53,8 +52,9 @@ footer a {
 }
 
 @media (max-width: 740px) {
-  .mdui-col-sm-2,
-  .mdui-col-sm-3,
+
+  .mdui-list-item .mdui-col-sm-2,
+  .mdui-list-item .mdui-col-sm-3,
   .forcedownload {
     display: none;
   }
@@ -79,7 +79,7 @@ footer a {
   --iconcolor: #dadada !important;
 }
 
-.mdui-theme-layout-dark .mdui-list-item-active{
+.mdui-theme-layout-dark .mdui-list-item-active {
   --color-active: rgb(255, 255, 255) !important;
 }
 
@@ -114,6 +114,7 @@ html *::-webkit-scrollbar {
   height: 4px;
   border-radius: 4px;
 }
+
 html ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.3);
 }
@@ -124,4 +125,18 @@ html ::-webkit-scrollbar-thumb {
 
 .mdui-menu {
   border-radius: 6px;
+}
+
+#file-list a {
+  width: 100%;
+  line-height: 48px;
+  overflow: hidden;
+}
+
+.mdui-appbar {
+  background: inherit;
+}
+
+.mdui-btn {
+  text-transform: none !important;
 }

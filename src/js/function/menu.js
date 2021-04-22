@@ -1,4 +1,3 @@
-import mdui from "../lib/mdui.js";
 window.listenerStatus = false;
 const openadminmenu = () => {
   let menu = new mdui.Menu("#mouseplace", "#admin-menu");

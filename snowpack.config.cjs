@@ -10,7 +10,7 @@ module.exports = {
     [
       "@snowpack/plugin-optimize",
       {
-        minifyJS: false,
+        minifyJS: true,
         minifyCSS: true,
         minifyHTML: false,
         preloadModules: false,
@@ -22,7 +22,7 @@ module.exports = {
     [
       "@snowpack/plugin-webpack",
       {
-        sourceMap: true,
+        sourceMap: false,
         htmlMinifierOptions: false,
         manifest: true,
         extendConfig: (config) => {

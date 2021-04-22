@@ -1,6 +1,4 @@
-import mdui from "./lib/mdui.js";
 import cookies from "./lib/cookies";
-import sha1 from "sha-1/dist/sha1.esm.js";
 export default {
   /**
    *
@@ -15,24 +13,6 @@ export default {
 };
 /**
  *
- *  refresh onemanager
- *
- *  @param {String} - URL for OM
- *  @return {Boolean} - Status of refresh
- *
- */
-export async function refresh(url) {
-  const GetURL = new URL(url);
-  GetURL.search = "?RefreshCache";
-  const req = await fetch(GetURL.href);
-  if (req.status === 302 || req.status === 202) {
-    return true;
-  } else {
-    return false;
-  }
-}
-/**
- *
  *  Check Onemanager-PHP Login status
  *
  *  @param {null}
@@ -40,18 +20,6 @@ export async function refresh(url) {
  */
 export function CheckLoginStatus() {
   return cookies.hasItem("admin");
-}
-/**
- *
- *  Logout Onemanager
- *
- *  @param {null} - Nothing to param here
- *  @return {undefined} - Nothing Can return here
- *
- */
-export async function logout() {
-  cookies.removeItem("admin", "/");
-  location.reload();
 }
 /**
  *
@@ -77,10 +45,13 @@ export async function Login(password) {
         timestamp: timestamp,
       }).String,
     })
-      .then((e) => e)
-      .catch((e) => e);
+    .then((e) => e)
+    .catch((e) => e);
   if (answer.status === 201) {
-    return { status: true, msg: "Login Successful" };
+    return {
+      status: true,
+      msg: "Login Successful"
+    };
   } else if (answer.status === 401) {
     return await LoginFallback(password);
   } else {
@@ -90,24 +61,33 @@ export async function Login(password) {
 
 async function LoginFallback(password) {
   const answer = await fetch("?admin", {
-    method: "POST",
-    credentials: "same-origin",
-    cache: "no-cache",
-    headers: {
-      "content-type": "application/x-www-form-urlencoded",
-    },
-    body: new Form({
-      password1: password,
-    }).String,
-  })
+      method: "POST",
+      credentials: "same-origin",
+      cache: "no-cache",
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      body: new Form({
+        password1: password,
+      }).String,
+    })
     .then((e) => e)
     .catch((e) => e);
   if (answer.status === 201) {
-    return { status: true, msg: "Login Successful" };
+    return {
+      status: true,
+      msg: "Login Successful"
+    };
   } else if (answer.status === 401) {
-    return { status: false, msg: "Check Password" };
+    return {
+      status: false,
+      msg: "Check Password"
+    };
   } else {
-    return { status: false, msg: "Unknown Error" };
+    return {
+      status: false,
+      msg: "Unknown Error"
+    };
   }
 }
 /**
@@ -255,19 +235,19 @@ function isFile(DOM) {
       isPDF = File.querySelector("embed") != null,
       isOffice = File.querySelector("iframe") != null,
       isVideo = File.querySelector("video") != null;
-    answer.type = isImg
-      ? "image"
-      : isMusic
-      ? "audio"
-      : isPDF
-      ? "PDF"
-      : isOffice
-      ? "office"
-      : isVideo
-      ? "video"
-      : isRichText
-      ? "text"
-      : "other";
+    answer.type = isImg ?
+      "image" :
+      isMusic ?
+      "audio" :
+      isPDF ?
+      "PDF" :
+      isOffice ?
+      "office" :
+      isVideo ?
+      "video" :
+      isRichText ?
+      "text" :
+      "other";
     return answer;
   } else {
     answer.status = false;

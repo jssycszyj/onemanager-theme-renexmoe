@@ -173,9 +173,9 @@ Pjax.prototype = {
 
   loadUrl: function (href, options) {
     options =
-      typeof options === "object"
-        ? extend({}, this.options, options)
-        : clone(this.options);
+      typeof options === "object" ?
+      extend({}, this.options, options) :
+      clone(this.options);
 
     this.log("load href", href, options);
 
@@ -217,8 +217,7 @@ Pjax.prototype = {
     if (state.options.history) {
       if (!window.history.state) {
         this.lastUid = this.maxUid = newUid();
-        window.history.replaceState(
-          {
+        window.history.replaceState({
             url: window.location.href,
             title: document.title,
             uid: this.maxUid,
@@ -231,8 +230,7 @@ Pjax.prototype = {
       // Update browser history
       this.lastUid = this.maxUid = newUid();
 
-      window.history.pushState(
-        {
+      window.history.pushState({
           url: state.href,
           title: state.options.title,
           uid: this.maxUid,

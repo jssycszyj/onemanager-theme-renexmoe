@@ -43,12 +43,12 @@ function flyingPages() {
   // Prefetch the given url using native 'prefetch'. Fallback to 'xhr' if not supported
   const prefetch = (url) =>
     new Promise((resolve, reject) => {
-      const link = document.createElement(`link`);
-      link.rel = `prefetch`;
+      const link = document.createElement("link");
+      link.rel = "prefetch";
       link.href = geturl(url);
       link.onload = resolve;
       link.onerror = reject;
-      console.log(`renexmoe::FlyingPages::Preload ${link.href}`);
+      console.log("renexmoe::FlyingPages::Preload ${link.href}");
       document.head.appendChild(link);
     });
 
@@ -178,13 +178,16 @@ function flyingPages() {
   requestIdleCallback(() =>
     setTimeout(
       () =>
-        document.querySelectorAll("a").forEach((e) => linksObserver.observe(e)),
+      document.querySelectorAll("a").forEach((e) => linksObserver.observe(e)),
       window.FPConfig.delay * 1000
     )
   );
 
   // Add event listeners to detect mouse hover and mobile touch
-  const listenerOptions = { capture: true, passive: true };
+  const listenerOptions = {
+    capture: true,
+    passive: true
+  };
   document.addEventListener("mouseover", mouseOverListener, listenerOptions);
   document.addEventListener("mouseout", mouseOutListener, listenerOptions);
   document.addEventListener("touchstart", touchStartListener, listenerOptions);

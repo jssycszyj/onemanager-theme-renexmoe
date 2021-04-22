@@ -1,11 +1,12 @@
 const fs = require("fs");
 const pkg = require("./package.json");
 const assets = require("./build/asset-manifest.json");
-let index = fs.readFileSync("./src/html/index.html", { encoding: "utf8" });
+let index = fs.readFileSync("./src/html/index.html", {
+  encoding: "utf8"
+});
 index = index.replace(
   '<meta name="theme-color" content="#fff" />',
-  `<link rel="stylesheet" href="${pkg.homepage}/css/app.css">` +
-    `<meta name="theme-color" content="#fff" />`
+  '<meta name="theme-color" content="#fff" />' + "\n" + `<link rel="stylesheet" href="${pkg.homepage}/css/app.css">`
 );
 index = index.replace(
   '<script type="module" src="/renexmoe_assets/js/app.js"></script>',
@@ -13,10 +14,12 @@ index = index.replace(
     let a = "";
     for (let b in assets) {
       if (b.split(".")[b.split(".").length - 1] === "js") {
-        a += `<script src="${pkg.homepage + assets[b]}"></script>`;
+        a += `<script src="${pkg.homepage + assets[b]}"></script>` + "\n";
       }
     }
     return a;
   })(assets)
 );
-fs.writeFileSync("./build/index.html", index, { encoding: "utf8" });
+fs.writeFileSync("./build/renexmoe-mod.html", index, {
+  encoding: "utf8"
+});

@@ -1,4 +1,3 @@
-import mdui from "../lib/mdui.js";
 const $ = mdui.$;
 export default () => {
   $.fn.extend({
@@ -33,10 +32,52 @@ export default () => {
       $("li[data-sort]").sortElements(function (a, b) {
         let data_a = $(a).attr("data-sort-" + sort_type),
           data_b = $(b).attr("data-sort-" + sort_type);
+        if (sort_type === "size") {
+          let data_a_t = data_a.slice(-2);
+          let data_a_n = data_a.slice(0, -2);
+          let data_b_t = data_b.slice(-2);
+          let data_b_n = data_b.slice(0, -2);
+          switch (data_a_t) {
+            case "TB":
+              data_a = data_a_n * 1024 * 1024 * 1024 * 1024;
+              break;
+            case "GB":
+              data_a = data_a_n * 1024 * 1024 * 1024;
+              break;
+            case "MB":
+              data_a = data_a_n * 1024 * 1024;
+              break;
+            case "KB":
+              data_a = data_a_n * 1024;
+              break;
+            default:
+              data_a = data_a_n;
+              break;
+          }
+          switch (data_b_t) {
+            case "TB":
+              data_b = data_b_n * 1024 * 1024 * 1024 * 1024;
+              break;
+            case "GB":
+              data_b = data_b_n * 1024 * 1024 * 1024;
+              break;
+            case "MB":
+              data_b = data_b_n * 1024 * 1024;
+              break;
+            case "KB":
+              data_b = data_b_n * 1024;
+              break;
+            default:
+              data_b = data_b_n;
+              break;
+          }
+          data_a = data_a + "";
+          data_b = data_b + "";
+        }
         let rt = data_a.localeCompare(data_b, undefined, {
           numeric: true,
         });
-        return sort_order === "more" ? 0 - rt : rt;
+        return sort_order === "more" ? rt : 0 - rt;
       });
       $(this)
         .attr("data-order", sort_order_to)

@@ -1,5 +1,6 @@
 import json from "../pack.js";
-const MODE = import.meta.env.MODE;
+const MODE =
+  import.meta.env.MODE;
 export default async function check() {
   let url = new URL("https://public.186526.xyz/renexmoe/checkupdate");
   url.search = `?version=${json.version}`;

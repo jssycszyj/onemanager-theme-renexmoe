@@ -1,4 +1,6 @@
-import { CheckLoginStatus } from "../utils";
+import {
+  CheckLoginStatus
+} from "../utils";
 class file {
   constructor(fileName, omURL) {
     this.fileName = fileName;

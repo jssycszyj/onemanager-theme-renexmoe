@@ -1,4 +1,3 @@
-import mdui from "./lib/mdui.js";
 import cookies from "./lib/cookies.js";
 const $ = mdui.$;
 const func = {

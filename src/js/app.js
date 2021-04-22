@@ -3,14 +3,13 @@
  * Copyright 2020-2021 186526 <i@186526.xyz>
  * Licensed under GPL-3.0
  */
-import "../css/notosans.css";
-import "../css/mdui.css";
 import "../css/app.css";
-import mdui from "./lib/mdui.js";
 import pjax from "./function/pjax.js";
 import theme from "./theme.js";
 import toggle from "./function/toggle.js";
-import { drawertoggle } from "./function/toggle.js";
+import {
+  drawertoggle
+} from "./function/toggle.js";
 import sort from "./function/sort.js";
 import menu from "./function/menu.js";
 import marked from "./function/marked.js";
@@ -24,28 +23,28 @@ window.renexmoe = {
   toggle_theme: theme.toggle,
   mutation: () => {
     ActiveDisk();
-    console.log(`renexmoe::pjax::Page Load Success`);
-    console.log(`renexmoe::marked::Update Marked`);
+    console.log("renexmoe::pjax::Page Load Success");
+    console.log("renexmoe::marked::Update Marked");
     marked();
-    console.log(`renexmoe::mdui::Init Theme`);
+    console.log("renexmoe::mdui::Init Theme");
     theme.mutation();
-    console.log(`renexmoe::sort::Init Sort`);
+    console.log("renexmoe::sort::Init Sort");
     sort();
     mdui.mutation();
-    console.log(`renexmoe::init::Start EventLister`);
+    console.log("renexmoe::init::Start EventLister");
     toggle();
     highlight();
-    console.log(`renexmoe::init::FlyingPages Preload`);
+    console.log("renexmoe::init::FlyingPages Preload");
     window.renexmoe.flyingPages = flyingPages();
-    if(!window.MorePage){
+    if (!window.MorePage) {
       window.renexmoe.thisPage = 1;
       window.renexmoe.needMorePages = false;
-      document.querySelectorAll('div[isob=true]').forEach(e=>e.parentElement.removeChild(e));
-    }else{
+      document.querySelectorAll("div[isob=true]").forEach(e => e.parentElement.removeChild(e));
+    } else {
       window.renexmoe.thisPage = 1;
       window.renexmoe.needMorePages = true;
     }
-    if(window.renexmoe.needMorePages){
+    if (window.renexmoe.needMorePages) {
       autoLoadPages();
     }
   },
@@ -58,12 +57,12 @@ mdui.$(() => {
     "\n %c OneManager-theme-renexmoe | Powered by OneManager-php && Webpack | 186526 \n",
     "color: #fff; background: #444; padding:5px 0;"
   );
-  console.log(`renexmoe::init::Start Load`);
-  console.log(`renexmoe::init::Start EventLister`);
+  console.log("renexmoe::init::Start Load");
+  console.log("renexmoe::init::Start EventLister");
   menu();
   drawertoggle();
-  console.log(`renexmoe::init::Start FlyingPages`);
-  console.log(`renexmoe::init::Init MDUI`);
+  console.log("renexmoe::init::Start FlyingPages");
+  console.log("renexmoe::init::Init MDUI");
   window.renexmoe.mutation();
   document.addEventListener("pjax:success", window.renexmoe.mutation);
 });

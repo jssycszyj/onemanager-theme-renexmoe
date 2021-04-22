@@ -1,10 +1,34 @@
 import "../../css/nprogress.css";
 import Pjax from "../lib/pjax_lib.js";
 import nprogress from "nprogress/nprogress.js";
+
+function officeinit() {
+  if (document.getElementById("office-a")) {
+    var ifm = document.getElementById("office-a");
+    var containerHeight = document.documentElement.clientHeight - 150;
+    ifm.height = containerHeight;
+  }
+}
+
+function pdfinit() {
+  if (document.getElementById("pdf-d")) {
+    loadpdf();
+  }
+}
+
+function videoint() {
+  if (document.getElementById("video-c")) {
+    loadvideo();
+  }
+}
+
 const whenpjax = () => {
   nprogress.inc();
 };
 const whensuccess = () => {
+  officeinit();
+  pdfinit();
+  videoint();
   nprogress.done();
 };
 export default () => {

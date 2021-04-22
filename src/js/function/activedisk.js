@@ -1,4 +1,6 @@
-import { GetDisk } from "../utils";
+import {
+  GetDisk
+} from "../utils";
 const ActiveDisk = async () => {
   const diskList = await GetDisk();
   diskList.diskList.forEach((e) => {

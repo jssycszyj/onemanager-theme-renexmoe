@@ -25,8 +25,8 @@ export default {
         document.cookie.replace(
           new RegExp(
             "(?:(?:^|.*;)\\s*" +
-              encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") +
-              "\\s*\\=\\s*([^;]*).*$)|^.*$"
+            encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") +
+            "\\s*\\=\\s*([^;]*).*$)|^.*$"
           ),
           "$1"
         )
@@ -42,9 +42,9 @@ export default {
       switch (vEnd.constructor) {
         case Number:
           sExpires =
-            vEnd === Infinity
-              ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT"
-              : "; max-age=" + vEnd;
+            vEnd === Infinity ?
+            "; expires=Fri, 31 Dec 9999 23:59:59 GMT" :
+            "; max-age=" + vEnd;
           break;
         case String:
           sExpires = "; expires=" + vEnd;
@@ -78,8 +78,8 @@ export default {
   hasItem: function (sKey) {
     return new RegExp(
       "(?:^|;\\s*)" +
-        encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") +
-        "\\s*\\="
+      encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") +
+      "\\s*\\="
     ).test(document.cookie);
   },
   keys: /* optional method: you can safely remove it! */ function () {

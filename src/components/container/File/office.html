@@ -1,8 +1,20 @@
 <!--IsofficeFileStart-->
-<iframe
-  id="office-a"
-  src="https://view.officeapps.live.com/op/view.aspx?src=<!--FileEncodeDownUrl-->"
-  style="width: 100%; height: 800px"
-  frameborder="0"
-></iframe>
+<iframe id="office-a" src="https://view.officeapps.live.com/op/view.aspx?src=<!--FileEncodeDownUrl-->"
+  style="width: 100%" frameborder="0"></iframe>
+<script>
+  window.onload = function () {
+    if (document.getElementById("office-a")) {
+      var ifm = document.getElementById("office-a");
+      var containerHeight = document.documentElement.clientHeight - 150;
+      ifm.height = containerHeight;
+    }
+  }
+  window.onresize = function () {
+    if (document.getElementById("office-a")) {
+      var ifm = document.getElementById("office-a");
+      var containerHeight = document.documentElement.clientHeight - 150;
+      ifm.height = containerHeight;
+    }
+  }
+</script>
 <!--IsofficeFileEnd-->

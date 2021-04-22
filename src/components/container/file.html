@@ -1,9 +1,5 @@
 <!--IsFileStart-->
-<div
-  id="file"
-  class="mdui-shadow-3"
-  style="padding: 5px; margin: 20px 0px; padding: 20px; border-radius: 8px"
->
+<div id="file" class="mdui-shadow-3" style="margin: 20px 0px; padding: 20px; border-radius: 8px">
   @@include("./File/img.html") @@include("./File/music.html")
   @@include("./File/video.html") @@include("./File/office.html")
   @@include("./File/pdf.html") @@include("./File/txt.html")
@@ -11,17 +7,15 @@
   <!--constStr@FileNotSupport-->
   <!--IsOtherFileEnd-->
 </div>
-<a
-  href="<!--FileEncodeReplaceUrl-->"
-  target="_blank"
-  class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"
-  ><i class="mdui-icon material-icons">file_download</i></a
->
+<a href="<!--FileEncodeReplaceUrl-->" target="_blank"
+  class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i
+    class="mdui-icon material-icons">file_download</i></a>
 <script>
   document.querySelector("#admin-menu").innerHTML +=
     '<li class="mdui-menu-item"><a href="javascript:void(0);"class="mdui-ripple downloadurl"><i class="mdui-menu-item-icon mdui-icon material-icons">cloud_download</i>下载链接</a></li>';
   document.querySelector(
-    ".mdui-toolbar"
-  ).innerHTML += `<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-up downloadurl"><i class="mdui-icon material-icons">cloud_download</i></a>`;
+      ".mdui-toolbar"
+    ).innerHTML +=
+    '<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-up downloadurl"><i class="mdui-icon material-icons">cloud_download</i></a>';
 </script>
 <!--IsFileEnd-->

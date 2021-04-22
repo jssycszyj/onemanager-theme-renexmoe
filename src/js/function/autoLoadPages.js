@@ -1,5 +1,6 @@
-import { Form } from "../utils.js";
-import mdui from "../lib/mdui.js";
+import {
+  Form
+} from "../utils.js";
 
 const randomString = (r) => {
   let s = "abcdefhijkmnprstwxyz",
@@ -21,11 +22,11 @@ async function loadNextPage() {
     });
     mdui.mutation();
     const nextPage = await fetch("#file-list", {
-      method: "POST",
-      body: await new Form({
-        pagenum: window.renexmoe.thisPage + 1,
-      }).BuildString(),
-    })
+        method: "POST",
+        body: await new Form({
+          pagenum: window.renexmoe.thisPage + 1,
+        }).BuildString(),
+      })
       .then((e) => {
         o.close();
         return e;
@@ -76,8 +77,9 @@ const makeNewPageListener = async () => {
             observer.disconnect();
             div.parentNode.removeChild(div);
           }
-        },
-        { threshold: [0] }
+        }, {
+          threshold: [0]
+        }
       );
       // 设置让 Observer 观察 #disqus_thread 元素
       observer.observe(div);
