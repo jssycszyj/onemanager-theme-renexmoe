@@ -9,16 +9,18 @@
 <div class="mdui-dialog" id="login_input">
   <div class="mdui-dialog-title">登录</div>
   <div class="mdui-dialog-content" style="height: 108px">
-    <div class="mdui-textfield mdui-textfield-floating-label">
-      <i class="mdui-icon material-icons">lock</i><label class="mdui-textfield-label">密码</label><input
-        class="mdui-textfield-input" name="password1" type="password"
-        onkeydown='if(event.keyCode==13) document.querySelector("#login_btn").click();' />
-    </div>
+    <form action="<!--IsPreview?-->admin" method="post" onsubmit="return sha1loginpass(this);">
+      <div class="mdui-textfield mdui-textfield-floating-label">
+        <i class="mdui-icon material-icons">lock</i><label class="mdui-textfield-label">密码</label>
+        <input class="mdui-textfield-input" id="login_input" name="password1" type="password">
+        <input name="timestamp" type="hidden" value="">
+      </div>
   </div>
   <div class="mdui-dialog-actions">
-    <button class="mdui-btn mdui-ripple" mdui-dialog-close="" id="login_close">取消</button><button id="login_btn"
-      class="mdui-btn mdui-ripple" type="submit" value="登录">
+    <button class="mdui-btn mdui-ripple" mdui-dialog-close="" id="login_close">取消</button>
+    <button id="login_btn_bak" class="mdui-btn mdui-ripple" type="submit" value="<!--constStr@Login-->">
       登录
     </button>
+    </form>
   </div>
 </div>
