@@ -45,8 +45,8 @@ export async function Login(password) {
         timestamp: timestamp,
       }).String,
     })
-      .then((e) => e)
-      .catch((e) => e);
+    .then((e) => e)
+    .catch((e) => e);
   if (answer.status === 201) {
     return {
       status: true,
@@ -61,16 +61,16 @@ export async function Login(password) {
 
 async function LoginFallback(password) {
   const answer = await fetch("?admin", {
-    method: "POST",
-    credentials: "same-origin",
-    cache: "no-cache",
-    headers: {
-      "content-type": "application/x-www-form-urlencoded",
-    },
-    body: new Form({
-      password1: password,
-    }).String,
-  })
+      method: "POST",
+      credentials: "same-origin",
+      cache: "no-cache",
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      body: new Form({
+        password1: password,
+      }).String,
+    })
     .then((e) => e)
     .catch((e) => e);
   if (answer.status === 201) {
@@ -238,33 +238,19 @@ function isFile(DOM) {
     answer.type = isImg ?
       "image" :
       isMusic ?
-        "audio" :
-        isPDF ?
-          "PDF" :
-          isOffice ?
-            "office" :
-            isVideo ?
-              "video" :
-              isRichText ?
-                "text" :
-                "other";
+      "audio" :
+      isPDF ?
+      "PDF" :
+      isOffice ?
+      "office" :
+      isVideo ?
+      "video" :
+      isRichText ?
+      "text" :
+      "other";
     return answer;
   } else {
     answer.status = false;
     return answer;
-  }
-
-  function sha1loginpass(f) {
-    if (f.password1.value == "") return false;
-    try {
-      timestamp = new Date().getTime() + "";
-      timestamp = timestamp.substr(0, timestamp.length - 3);
-      f.timestamp.value = timestamp;
-      f.password1.value = sha1(timestamp + "" + f.password1.value);
-      return true;
-    } catch {
-      alert("sha1.js not loaded.");
-      return false;
-    }
   }
 }

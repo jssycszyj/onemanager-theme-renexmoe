@@ -38,7 +38,7 @@
     "snowpack": "^3.0.11",
     "source-map-explorer": "^2.5.2"
   },
-  "homepage": "https://cdn.jsdelivr.net/gh/jssycszyj/renexmoe-cdn@v21101301",
+  "homepage": "https://cdn.jsdelivr.net/gh/jssycszyj/renexmoe-cdn@v21101303",
   "sideEffects": false,
   "browserslist": [
     "Chrome 40",

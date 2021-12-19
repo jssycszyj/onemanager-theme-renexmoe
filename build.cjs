@@ -9,6 +9,10 @@ index = index.replace(
   '<meta name="theme-color" content="#fff" />' + "\n" + `<link rel="stylesheet" href="${pkg.homepage}/css/app.css">`
 );
 index = index.replace(
+  '<script src="/renexmoe_assets/js/extra.js"></script>',
+  `<script src="${pkg.homepage}/js/extra.js"></script>`
+);
+index = index.replace(
   '<script type="module" src="/renexmoe_assets/js/app.js"></script>',
   ((assets) => {
     let a = "";
